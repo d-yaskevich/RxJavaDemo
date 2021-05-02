@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btn_generate_random"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:text="Generate random values"
         app:layout_constraintBottom_toTopOf="@id/btn_start_observable"
         app:layout_constraintEnd_toStartOf="@id/tv_random_values"
@@ -21,6 +21,7 @@
         android:id="@+id/tv_random_values"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:gravity="center"
         android:padding="8dp"
         android:textSize="22sp"
@@ -38,7 +39,8 @@
         app:layout_constraintBottom_toTopOf="@id/btn_start_single"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
         android:id="@+id/btn_start_single"
@@ -46,9 +48,50 @@
         android:layout_height="wrap_content"
         android:onClick="onStartSingle"
         android:text="Start single"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_start_subject_observable"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/btn_start_observable" />
+        app:layout_constraintTop_toBottomOf="@id/btn_start_observable" />
+
+    <Button
+        android:id="@+id/btn_start_subject_observable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onStartSubjectObservable"
+        android:text="Start subject\nobservable"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btn_start_subject"
+        app:layout_constraintTop_toBottomOf="@id/btn_start_single" />
+
+    <Button
+        android:id="@+id/btn_start_subject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onStartSubject"
+        android:text="Start subject"
+        app:layout_constraintBaseline_toBaselineOf="@id/btn_start_subject_observable"
+        app:layout_constraintLeft_toRightOf="@id/btn_start_subject_observable"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/vg_progress"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.2"
+        android:background="@color/purple_700"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
